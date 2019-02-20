@@ -63,7 +63,7 @@ export default Vue.extend({
         'q-date--dark': this.dark,
         'q-date--readonly': this.readonly,
         'disabled': this.disable,
-        [`q-date--${this.landscape === true ? 'landscape' : 'portrait'}`]: true
+        [`q-date--${this.minimal === true ? 'minimal' : this.landscape === true ? 'landscape' : 'portrait'}`]: true
       }
     },
 
