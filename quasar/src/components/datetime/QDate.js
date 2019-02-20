@@ -90,9 +90,9 @@ export default Vue.extend({
       if (isNaN(date.valueOf())) { return ' --- ' }
 
       if (this.$q.lang.isoName === 'zh-hans' || this.$q.lang.isoName === 'zh-hant') {
-        return this.$q.lang.date.daysShort[date.getDay()] +
-          ', ' + model.month + '月 ' +
-          model.day + '日'
+        return this.$q.lang.date.daysShort[ date.getDay() ] + ', ' +
+        model.month + '月 ' +
+        model.day + '日'
       }
 
       return this.$q.lang.date.daysShort[ date.getDay() ] + ', ' +
