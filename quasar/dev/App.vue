@@ -1,15 +1,35 @@
 <template>
   <div id="q-app">
-    <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut" mode="out-in" :duration="300" @leave="resetScroll">
+    <transition
+      enter-active-class="animated fadeIn"
+      leave-active-class="animated fadeOut"
+      mode="out-in"
+      :duration="300"
+      @leave="resetScroll"
+    >
       <router-view />
     </transition>
     <div
       style="padding: 10px; right: 10px; bottom: 10px"
       class="rounded-borders bg-white shadow-4 fixed z-top"
     >
-      <q-btn dense flat size="sm" icon="visibility" @click="showSelector = !showSelector" class="absolute-top-right z-top" />
+      <q-btn
+        dense
+        flat
+        size="sm"
+        icon="visibility"
+        @click="showSelector = !showSelector"
+        class="absolute-top-right z-top"
+      />
       <template v-if="showSelector">
-        <q-btn dense flat size="sm" :icon="lang === 'he' ? 'navigate_before' : 'navigate_next'" @click="lang = lang === 'en-us' ? 'he' : 'en-us'" class="absolute-bottom-right z-top" />
+        <q-btn
+          dense
+          flat
+          size="sm"
+          :icon="lang === 'he' ? 'navigate_before' : 'navigate_next'"
+          @click="lang = lang === 'en-us' ? 'he' : 'en-us'"
+          class="absolute-bottom-right z-top"
+        />
         <q-select
           label="Quasar Language"
           dense
@@ -54,7 +74,7 @@ export default {
     return {
       lang: this.$q.lang.isoName,
       iconSet: this.$q.iconSet.name,
-      showSelector: false
+      showSelector: true
     }
   },
   watch: {
@@ -77,7 +97,10 @@ export default {
     }
   },
   created () {
-    this.langOptions = languages.map(lang => ({ label: lang.nativeName, value: lang.isoName }))
+    this.langOptions = languages.map(lang => ({
+      label: lang.nativeName,
+      value: lang.isoName
+    }))
   }
 }
 </script>
