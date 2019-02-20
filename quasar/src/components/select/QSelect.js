@@ -108,7 +108,7 @@ export default Vue.extend({
         ? (this.multiple === true ? this.value : [ this.value ])
         : []
 
-      return this.mapOptions === true
+      return this.mapOptions === true && Array.isArray(this.options) === true
         ? val.map(v => this.__getOption(v))
         : val
     },
@@ -489,7 +489,7 @@ export default Vue.extend({
         return this.selectedScope.map((scope, i) => h(QChip, {
           key: 'option-' + i,
           props: {
-            removable: true,
+            removable: this.__isDisabled(scope.opt) !== true,
             dense: true,
             textColor: this.color,
             tabindex
@@ -736,7 +736,8 @@ export default Vue.extend({
       updatePosition(
         el,
         this.$refs.control,
-        this.optionsCover === true && this.noOptions !== true && this.useInput !== true
+        this.optionsCover === true && this.noOptions !== true && this.useInput !== true,
+        this.optionsDense
       )
     }
   },
